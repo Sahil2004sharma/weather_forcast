@@ -1,13 +1,13 @@
 import streamlit as st
 import requests
 
-# Defining a class to handle weather forecasting
+
 class WeatherData:
     def __init__(self, api_key):
         self.api_key = api_key
         self.base_url = "http://api.weatherapi.com/v1/forecast.json"  
 
-    # Function to fetch weather info
+   
     def fetch_weather(self, city, days=3):  
         url = f"{self.base_url}?key={self.api_key}&q={city}&days={days}&aqi=no&alerts=no"
         try:
@@ -19,14 +19,14 @@ class WeatherData:
         except Exception as e:
             return {"error": {"message": str(e)}}
 
-# Main function for Streamlit app
+
 def run_app():
     st.title(" Weather Forecast Portal")
 
-    api_key = "31cb52e6d9d54f80bea65125251705"  # API key for weather data
-    weather = WeatherData(api_key)  # Initializing class object
+    api_key = "31cb52e6d9d54f80bea65125251705" 
+    weather = WeatherData(api_key)  
 
-    city_name = st.text_input("Enter City Name")  # Input field for user
+    city_name = st.text_input("Enter City Name") 
     forecast_days = st.slider("Select Forecast Duration", 1, 7, 3)  
 
     if st.button("Get Weather"):
